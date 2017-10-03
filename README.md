@@ -2,3 +2,5 @@
 
 
 # hibernate-search + elasticsearch 5.x.x - Test Case
+
+### HSEARCH-2906
