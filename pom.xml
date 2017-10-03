@@ -17,6 +17,10 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
 
+        <version.maven-failsafe-plugin>2.19.1</version.maven-failsafe-plugin>
+        <version.maven-surefire-plugin>2.19.1</version.maven-surefire-plugin>
+        <version.maven-compiler-plugin>3.5.1</version.maven-compiler-plugin>
+
         <version.org.hibernate.search>5.8.1.Final</version.org.hibernate.search>
         <version.org.hibernate>5.2.11.Final</version.org.hibernate>
         <version.com.h2database>1.4.196</version.com.h2database>
@@ -25,6 +29,11 @@
 
         <version.elasticsearch-maven-plugin>5.11</version.elasticsearch-maven-plugin>
         <version.org.elasticsearch>5.6.2</version.org.elasticsearch>
+
+        <elasticsearch.clusterName>hsearchEsTestCluster</elasticsearch.clusterName>
+        <elasticsearch.httpPort>9200</elasticsearch.httpPort>
+        <elasticsearch.transportPort>9300</elasticsearch.transportPort>
+
     </properties>
 
     <dependencies>
@@ -88,21 +97,22 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>${version.maven-compiler-plugin}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${version.maven-surefire-plugin}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${version.maven-failsafe-plugin}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -124,9 +134,10 @@
                 <artifactId>elasticsearch-maven-plugin</artifactId>
                 <version>${version.elasticsearch-maven-plugin}</version>
                 <configuration>
-                    <clusterName>hsearchEsTestCluster</clusterName>
+                    <clusterName>${elasticsearch.clusterName}</clusterName>
                     <version>${version.org.elasticsearch}</version>
-                    <httpPort>9200</httpPort>
+                    <httpPort>${elasticsearch.httpPort}</httpPort>
+                    <transportPort>${elasticsearch.transportPort}</transportPort>
                     <pathConf>${project.basedir}/elasticsearch-maven-plugin/configuration/</pathConf>
                     <pathInitScript>${project.basedir}/elasticsearch-maven-plugin/init/init.script</pathInitScript>
                     <autoCreateIndex>false</autoCreateIndex>
