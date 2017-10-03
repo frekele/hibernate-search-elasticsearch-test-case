@@ -1,0 +1,41 @@
+language: java
+
+jdk:
+#  - openjdk8
+  - oraclejdk8
+
+env:
+  - MAVEN=3.5.0
+
+cache:
+  directories:
+    - ${HOME}/.m2
+
+
+before_install:
+  - chmod +x .travis/*
+  - export MVN_HOME=/tmp/maven-${MAVEN}
+  - mkdir ${MVN_HOME}
+  - export PATH=${MVN_HOME}/bin:$PATH
+
+install:
+  - wget -qO- https://archive.apache.org/dist/maven/maven-3/${MAVEN}/binaries/apache-maven-${MAVEN}-bin.tar.gz | tar xz --strip 1 -C ${MVN_HOME}
+
+before_script:
+
+script:
+  - ${MVN_HOME}/bin/mvn --settings .travis/settings.xml verify -B -V
+
+before_cache:
+
+after_success:
+
+after_failure:
+
+before_deploy:
+
+deploy:
+
+after_deploy:
+
+after_script:
