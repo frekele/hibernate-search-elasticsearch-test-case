@@ -15,7 +15,7 @@
 		<version.org.slf4j>1.7.2</version.org.slf4j>
 
 		<version.elasticsearch-maven-plugin>5.7</version.elasticsearch-maven-plugin>
-		<version.org.elasticsearch>5.6.0</version.org.elasticsearch>
+		<version.org.elasticsearch>5.6.2</version.org.elasticsearch>
 	</properties>
 
 	<dependencies>
