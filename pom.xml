@@ -9,6 +9,14 @@
     <name>Hibernate Search with Elasticsearch Test Case Template</name>
 
     <properties>
+        <encoding>UTF-8</encoding>
+        <file.encoding>UTF-8</file.encoding>
+        <console.encoding>UTF-8</console.encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+
         <version.org.hibernate.search>5.8.1.Final</version.org.hibernate.search>
         <version.org.hibernate>5.2.11.Final</version.org.hibernate>
         <version.com.h2database>1.4.196</version.com.h2database>
