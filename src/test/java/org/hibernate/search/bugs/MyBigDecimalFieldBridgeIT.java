@@ -27,7 +27,7 @@ public class MyBigDecimalFieldBridgeIT extends SearchTestBase {
     @Test
     @TestForIssue(jiraKey = "HSEARCH-2906") // Please fill in the JIRA key of your issue
     @SuppressWarnings("unchecked")
-    public void testHSEARCH2906() {
+    public void testHSEARCH2906Fixed() {
         try (Session s = getSessionFactory().openSession()) {
             ProductEntity yourEntity1 = new ProductEntity(1L, "table", BigDecimal.valueOf(344.89));
             ProductEntity yourEntity2 = new ProductEntity(2L, "chair", BigDecimal.valueOf(132.54));
@@ -44,11 +44,13 @@ public class MyBigDecimalFieldBridgeIT extends SearchTestBase {
             List<ProductEntity> result = (List<ProductEntity>) session.createFullTextQuery(query).list();
             assertEquals(1, result.size());
             assertEquals((long) 1, (long) result.get(0).getId());
+            assertEquals(BigDecimal.valueOf(344.89), result.get(0).getPrice());
 
             query = qb.keyword().onField("name").matching("chair").createQuery();
             result = (List<ProductEntity>) session.createFullTextQuery(query).list();
             assertEquals(1, result.size());
             assertEquals((long) 2, (long) result.get(0).getId());
+            assertEquals(BigDecimal.valueOf(132.54), result.get(0).getPrice());
         }
     }
 
