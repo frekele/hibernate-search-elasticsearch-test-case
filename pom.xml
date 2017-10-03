@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.hibernate.testcasetemplate</groupId>
-	<artifactId>test-case-template-hibernate-search-elasticsearch-5</artifactId>
+	<groupId>org.hibernate.frekele.testcase</groupId>
+	<artifactId>hibernate-search-elasticsearch-test-case</artifactId>
 	<version>1.0.0.Final</version>
 	<name>Hibernate Search with Elasticsearch Test Case Template</name>
 
