@@ -26,6 +26,7 @@
         <version.com.h2database>1.4.196</version.com.h2database>
         <version.junit>4.12</version.junit>
         <version.org.slf4j>1.7.25</version.org.slf4j>
+        <version.jackson-databind>2.9.1</version.jackson-databind>
 
         <version.elasticsearch-maven-plugin>5.11</version.elasticsearch-maven-plugin>
         <version.org.elasticsearch>5.6.2</version.org.elasticsearch>
@@ -83,6 +84,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>${version.org.slf4j}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${version.jackson-databind}</version>
         </dependency>
     </dependencies>
 
