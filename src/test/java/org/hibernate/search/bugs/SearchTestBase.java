@@ -9,6 +9,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.SessionFactoryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.spi.ServiceRegistryImplementor;
+import org.jboss.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 
@@ -51,7 +52,7 @@ public abstract class SearchTestBase {
         String protocol = "http";
         String url = InetAddress.getLoopbackAddress().getHostAddress();
         String port = "9200";
-        System.out.println("RestClient: " + protocol + "://" + url + ":" + port);
+        this.getLogger().info("RestClient: " + protocol + "://" + url + ":" + port);
         RestClientBuilder builder = RestClient.builder(new HttpHost(url, Integer.valueOf(port), protocol));
         this.elasticsearchRestClient = builder.build();
     }
@@ -65,6 +66,8 @@ public abstract class SearchTestBase {
     }
 
     protected abstract Class<?>[] getAnnotatedClasses();
+
+    protected abstract Logger getLogger();
 
     protected SessionFactory getSessionFactory() {
         return sessionFactory;

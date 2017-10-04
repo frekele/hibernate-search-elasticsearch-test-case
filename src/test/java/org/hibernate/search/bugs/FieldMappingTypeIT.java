@@ -13,6 +13,7 @@ import org.hibernate.search.elasticsearch.ElasticsearchQueries;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.hibernate.search.query.engine.spi.QueryDescriptor;
 import org.hibernate.search.testsupport.TestForIssue;
+import org.jboss.logging.Logger;
 import org.junit.After;
 import org.junit.Test;
 
@@ -24,11 +25,18 @@ import static org.junit.Assert.*;
 
 public class FieldMappingTypeIT extends SearchTestBase {
 
-    JsonNode responseJsonNode;
+    private Logger logger = Logger.getLogger(FieldMappingTypeIT.class.getName());
+
+    private JsonNode responseJsonNode;
 
     @Override
     public Class<?>[] getAnnotatedClasses() {
         return new Class<?>[]{MyTestEntity.class};
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return logger;
     }
 
     @Override
@@ -79,7 +87,7 @@ public class FieldMappingTypeIT extends SearchTestBase {
             params.put("pretty", "true");
             Response response = getElasticsearchRestClient().performRequest("GET", "/my-index/" + MyTestEntity.class.getCanonicalName() + "/_mapping", params);
             String responseBody = EntityUtils.toString(response.getEntity());
-            System.out.println(responseBody);
+            this.getLogger().info(responseBody);
 
             ObjectMapper mapper = new ObjectMapper();
             this.responseJsonNode = mapper.readTree(responseBody);
